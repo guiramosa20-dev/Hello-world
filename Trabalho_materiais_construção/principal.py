@@ -35,6 +35,7 @@ def login():
 # Main
 escolha2 = login()
 
+#Daqui pra baixo os prints são apenas placeholders para as funcionalidades que vão ser implementadas
 match escolha2:
     case 100:
         while True:
@@ -54,3 +55,4 @@ match escolha2:
             print('Nodar descrição de funcionário')
             print('Excluir produto')
             print('Excluir funcionário')
+
