@@ -44,8 +44,11 @@ match escolha2:
 
     case 200:
         while True:
-            print('Registro de Entrega de Mercadoria:')
-            print('Descartar mercadoria danificada')
+            #print('Registro de Entrega de Mercadoria:')
+            print()
+            print('Entrega de Mercadoria:')
+            print('-'*20)
+            #addMercadoria()
     case 300:
         while True:
             print('Relatório de vendas')

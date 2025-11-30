@@ -13,5 +13,6 @@ class PRODUTO:
     codigo: int = 0
     nome: str = ''
     senha: str = ''
-    vedas: int = ''
-    quantidade = ''
+    vendas: int = 0 #p/ possível implementação futura
+    quantidade: int = 0
+    preco: float = 0.0

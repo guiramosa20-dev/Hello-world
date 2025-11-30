@@ -1,7 +1,7 @@
 from registros import *
 
 #Cadastro de funcionário novo:
-def addFuncionario():#Onde: efetivo = funcionarios
+def addFuncionario():#Onde: a variávelefetivo = FUNCIONÁRIOS()
     
         print('Novo funcionário:')
         efetivo = FUNCIONARIO()
@@ -20,7 +20,17 @@ def addFuncionario():#Onde: efetivo = funcionarios
 def checarFuncionario(code,name,passe,efetivo):#Onde: code = codigo, name = nome e passe = senha, funcionários
     i = len(efetivo)
     achou = False
-    for j in range(i):
-        if  code == efetivo[j].codigo and name == efetivo[j].nome and passe == efetivo[j].senha:
+    for indiceEfetivo in range(i):
+        if  code == efetivo[indiceEfetivo].codigo and name == efetivo[indiceEfetivo].nome and passe == efetivo[indiceEfetivo].senha:
              achou = True
+
     return achou
+
+#adiciona mercadoria ao estoque
+def addMercadoria():#Onde a variávelestoque = MERCADORIA()
+    print('Nova mercadoria:')
+    estoque = PRODUTO()
+    estoque.codigo = int(input('Código da mercadoria: ').strip())
+    estoque.quantidade = int(input('Quantidade da mercadoria: ').strip())
+    estoque.preco = float(input('Preço da mercadoria: ').strip())
+    return estoque
