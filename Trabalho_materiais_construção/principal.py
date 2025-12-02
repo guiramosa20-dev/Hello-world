@@ -31,31 +31,36 @@ def login():
 
             case _:#Informa que a opção escolhida é inválida
                 print('\033[31mOpção inválida!\033[m')
-    
-# Main
-escolha2 = login()
+
+#/////////////////////////// Main code //////////////////////////////////
 
 #Daqui pra baixo os prints são apenas placeholders para as funcionalidades que vão ser implementadas
-match escolha2:
-    case 100:
-        while True:
-            print('Registrar compras:')
-            print('-'*20)
+while True
+    escolha2 = login()
 
-    case 200:
-        while True:
-            #print('Registro de Entrega de Mercadoria:')
-            print()
-            print('Entrega de Mercadoria:')
-            print('-'*20)
-            #addMercadoria()
-    case 300:
-        while True:
-            print('Relatório de vendas')
-            print('Relatório de estoque')
-            print('Relatório de produtos descartados')
-            print('Mudar descrição de produto')
-            print('Nodar descrição de funcionário')
-            print('Excluir produto')
-            print('Excluir funcionário')
+    match escolha2:
+        case 100:
+            while True:
+                print('Registrar compras:')
+                print('-'*20)
+
+        case 200:
+            while True:
+                #print('Registro de Entrega de Mercadoria:')
+                print()
+                print('Entrega de Mercadoria:')
+                print('-'*20)
+                #deposito = addMercadoria()
+        case 300:
+            while True:
+                print('Relatório de vendas')
+                print('Relatório de estoque')
+                print('Relatório de produtos descartados')
+                print('Mudar descrição de produto')
+                print('Nodar descrição de funcionário')
+                print('Excluir produto')
+                print('Excluir funcionário')
+        case _:
+            print('\033[31mOpção inválida!\033[m')
+
 
