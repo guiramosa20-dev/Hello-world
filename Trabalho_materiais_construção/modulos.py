@@ -4,7 +4,7 @@ from registros import *
 def addFuncionario():#Onde: a variávelefetivo = FUNCIONÁRIOS()
     
         print('Novo funcionário:')
-        efetivo = FUNCIONARIO()
+        efetivo = FUNCIONARIO() #efetivo deve se tornar uma lista e FUNCIONARIO() deve ser inserido dentro dela
         codigo = int(input('Código do novato:\n100 - Caixa\n200 - Conferente\n200 - Administrativo\n...').strip())
         #Verifica se o código é válido:
         if codigo != 100 and codigo != 200 and codigo != 300:
@@ -29,8 +29,9 @@ def checarFuncionario(code,name,passe,efetivo):#Onde: code = codigo, name = nome
 #adiciona mercadoria ao estoque
 def addMercadoria():#Onde a variávelestoque = MERCADORIA()
     print('Nova mercadoria:')
-    estoque = PRODUTO()
+    estoque = PRODUTO() #estoque deve se tornar uma lista e PRODUTO() deve ser adicionado à ela
     estoque.codigo = int(input('Código da mercadoria: ').strip())
     estoque.quantidade = int(input('Quantidade da mercadoria: ').strip())
     estoque.preco = float(input('Preço da mercadoria: ').strip())
+
     return estoque
