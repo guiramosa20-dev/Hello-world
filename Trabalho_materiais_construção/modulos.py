@@ -17,7 +17,7 @@ def addFuncionario():#Onde: a variávelefetivo = FUNCIONÁRIOS()
         return efetivo
 
 #checa se o funcionário está cadastrado:
-def checarFuncionario(code,name,passe,efetivo):#Onde: code = codigo, name = nome e passe = senha, funcionários
+def checarFuncionario(code,name,passe,efetivo):#Onde: code = codigo, name = nome e passe = senha, efetivo = funcionários
     i = len(efetivo)
     achou = False
     for indiceEfetivo in range(i):
@@ -35,3 +35,4 @@ def addMercadoria():#Onde a variávelestoque = MERCADORIA()
     estoque.preco = float(input('Preço da mercadoria: ').strip())
 
     return estoque
+
