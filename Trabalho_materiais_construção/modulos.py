@@ -18,15 +18,15 @@ def addFuncionario():#Onde: a variávelefetivo = FUNCIONÁRIOS()
     for _ in range(i):
         novato = FUNCIONARIO()
         efetivo.append(novato)
-        codigo = int(input(f'Código do novato{_+1}º:\n100 - Caixa\n200 - Conferente\n200 - Administrativo\n...').strip())
+        codigo = int(input(f'Código do {_+1}º novato:\n100 - Caixa\n200 - Conferente\n200 - Administrativo\n...').strip())
         #Verifica se o código é válido:
         if codigo != 100 and codigo != 200 and codigo != 300:
             print('\033[31m Código inválido!\033[m')
         #Adiciona funcionário ao registro:
         else:
             novato.codigo = codigo
-            novato.nome = input(f'Nome do novato{_+1}º: ').title().strip()
-            novato.senha = input(f'senha do novato{_+1}º: ').strip()
+            novato.nome = input(f'Nome do {_+1}º novato: ').title().strip()
+            novato.senha = input(f'Senha do {_+1}º novato: ').strip()
         
     salvarDados('funcionarios.json',efetivo)
     print('\033[32mFuncionário(s) cadastrado(s) com sucesso!\033[m')
@@ -51,11 +51,11 @@ def addMercadoria():#Onde a variávelestoque = MERCADORIA()
     
     for _ in range(i):
         novo = PRODUTO() #estoque deve se tornar uma lista e PRODUTO() deve ser adicionado à ela
-        novo.codigo = int(input('Código da mercadoria: ').strip())
-        novo.nome = input('Nome da mercadoria: ').strip().title()
-        novo.descricao = input('Descrição da mercadoria: ').strip()
-        novo.quantidade = int(input('Quantidade da mercadoria: ').strip())
-        novo.preco = float(input('Preço da mercadoria: ').strip())
+        novo.codigo = int(input(f'Código da {_+1}ª mercadoria: ').strip())
+        novo.nome = input(f'Nome da {_+1}ª mercadoria: ').strip().title()
+        novo.descricao = input(f'Descrição da {_+1}ª mercadoria: ').strip()
+        novo.quantidade = int(input(f'Quantidade da {_+1}ª mercadoria: ').strip())
+        novo.preco = float(input(f'Preço da {_+1}ª mercadoria: ').strip())
         estoque.append(novo)
 
     salvarDados('estoque.json',estoque)
