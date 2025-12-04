@@ -1,7 +1,9 @@
 from registros import *
 from modulos import *
 from getpass import getpass
+from time import sleep
 
+#/////////////////////////// Função de login //////////////////////////////////
 def login():
     # Cabeçalho de inicialização do código:
     print('-'*20)
@@ -11,7 +13,7 @@ def login():
 
     while True:
         # Gerenciamento do acesso do funcionário:
-        print('Escolha:\n 1 - Cadastrar Funcionário \n 2 - Fazer Login')
+        print('Escolha:\n 1 - Cadastrar Funcionário \n 2 - Fazer Login \n 3 - Sair')
         escolha = int(input('...').strip())
 
         match escolha:
@@ -19,8 +21,10 @@ def login():
                 addFuncionario()
     
             case 2:#Login
+                print('-'*20)
+                print('Faça seu login:')
                 codigo = int(input('Código: ').strip())
-                nome = input('Nome: ').strip()
+                nome = input('Nome: ').strip().title()
                 senha = getpass('Senha: ')
 
                 if checarFuncionario(codigo,nome,senha):#Verificando se o funcionário está cadastrado
@@ -28,6 +32,11 @@ def login():
                 else:
                     print('\033[31mFuncionário não cadastrado!\033[m')
 
+            case 3:#Sair
+                print('Saindo...')
+                sleep(3)
+                return 3
+                break
             case _:#Informa que a opção escolhida é inválida
                 print('\033[31mOpção inválida!\033[m')
 
@@ -36,7 +45,8 @@ def login():
 #Daqui pra baixo os prints são apenas placeholders para as funcionalidades que vão ser implementadas
 while True:
     escolha2 = login()
-
+    if escolha2 == 3:
+        break
     match escolha2:
         case 100:
             while True:
@@ -45,11 +55,25 @@ while True:
 
         case 200:
             while True:
-                #print('Registro de Entrega de Mercadoria:')
-                print()
-                print('Entrega de Mercadoria:')
                 print('-'*20)
-                #deposito = addMercadoria()
+                print('Gerenciar estoque:')
+                print('-'*20)
+                print('1 - Adicionar mercadoria')
+                print('2 - Remover mercadoria')
+                print('3 - Sair')
+
+                escolha3 = int(input('...').strip())
+
+                match escolha3:
+                    case 1:
+                        addMercadoria()
+                    case 2:
+                        removeMercadoria()
+                    case 3:
+                        break
+                    case _:
+                        print('\033[31mOpção inválida!\033[m')
+
         case 300:
             while True:
                 print('Relatório de vendas')

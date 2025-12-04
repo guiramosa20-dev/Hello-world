@@ -9,6 +9,7 @@ def salvarDados(ARQUIVO,registro):
             json.dump([asdict(p) for p in registro], arquivo, ensure_ascii=False, indent=4)
     except Exception as e:
         print(f'\033[31mErro ao salvar arquivo: {e}\033[m')
+
 #Cadastro de funcionário novo:
 def addFuncionario():#Onde: a variávelefetivo = FUNCIONÁRIOS()
     
@@ -32,6 +33,8 @@ def addFuncionario():#Onde: a variávelefetivo = FUNCIONÁRIOS()
 
 #checa se o funcionário está cadastrado:
 def checarFuncionario(code,name,passe):#Onde: code = codigo, name = nome e passe = senha, efetivo = funcionários
+    achou = False
+
     with open('funcionarios.json','r', encoding='utf-8') as efetivo:
         data = json.load(efetivo)
         for i in range(len(data)):
@@ -42,11 +45,32 @@ def checarFuncionario(code,name,passe):#Onde: code = codigo, name = nome e passe
 
 #adiciona mercadoria ao estoque
 def addMercadoria():#Onde a variávelestoque = MERCADORIA()
-    print('Nova mercadoria:')
-    estoque = PRODUTO() #estoque deve se tornar uma lista e PRODUTO() deve ser adicionado à ela
-    estoque.codigo = int(input('Código da mercadoria: ').strip())
-    estoque.quantidade = int(input('Quantidade da mercadoria: ').strip())
-    estoque.preco = float(input('Preço da mercadoria: ').strip())
+    estoque = []
 
-    return estoque
+    i = int(input('Número de mercadorias a serem cadastradas: ').strip())
+    
+    for _ in range(i):
+        novo = PRODUTO() #estoque deve se tornar uma lista e PRODUTO() deve ser adicionado à ela
+        novo.codigo = int(input('Código da mercadoria: ').strip())
+        novo.nome = input('Nome da mercadoria: ').strip().title()
+        novo.descricao = input('Descrição da mercadoria: ').strip()
+        novo.quantidade = int(input('Quantidade da mercadoria: ').strip())
+        novo.preco = float(input('Preço da mercadoria: ').strip())
+        estoque.append(novo)
+
+    salvarDados('estoque.json',estoque)
+    print('\033[32mMercadoria(s) cadastrada(s) com sucesso!\033[m')
+
+#excluir mercadoria do estoque
+def removeMercadoria():
+    with open('estoque.json','r', encoding='utf-8') as arquivo:
+        data = json.load(arquivo)
+        codigo = int(input('Código da mercadoria a ser removida: ').strip())
+        for i in range(len(data)):
+            if data[i]['codigo'] == codigo:
+                del data[i]
+                print('\033[32mMercadoria removida com sucesso!\033[m')
+                break
+        else:
+            print('\033[31mMercadoria não encontrada!\033[m')
 

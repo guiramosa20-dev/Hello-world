@@ -1,0 +1,9 @@
+[
+    {
+        "codigo": 123,
+        "nome": "Pregos",
+        "descricao": "um monte de pregos",
+        "quantidade": 10,
+        "preco": 3.99
+    }
+]

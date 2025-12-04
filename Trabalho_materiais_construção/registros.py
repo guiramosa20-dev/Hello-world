@@ -12,7 +12,6 @@ class FUNCIONARIO:
 class PRODUTO:
     codigo: int = 0
     nome: str = ''
-    senha: str = ''
-    vendas: int = 0 #p/ possível implementação futura
+    descricao: str = ''
     quantidade: int = 0
     preco: float = 0.0
