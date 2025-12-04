@@ -8,7 +8,6 @@ def login():
     print(''*5,'Casa do Prego')
     print('-'*20)
     print('-')
-    funcionarios = []
 
     while True:
         # Gerenciamento do acesso do funcionário:
@@ -17,14 +16,14 @@ def login():
 
         match escolha:
             case 1:#cadastro de 1 funcionário
-                funcionarios.append(addFuncionario())
+                addFuncionario()
     
             case 2:#Login
                 codigo = int(input('Código: ').strip())
                 nome = input('Nome: ').strip()
                 senha = getpass('Senha: ')
 
-                if checarFuncionario(codigo,nome,senha,funcionarios):#Verificando se o funcionário está cadastrado
+                if checarFuncionario(codigo,nome,senha):#Verificando se o funcionário está cadastrado
                     return codigo
                 else:
                     print('\033[31mFuncionário não cadastrado!\033[m')
@@ -35,7 +34,7 @@ def login():
 #/////////////////////////// Main code //////////////////////////////////
 
 #Daqui pra baixo os prints são apenas placeholders para as funcionalidades que vão ser implementadas
-while True
+while True:
     escolha2 = login()
 
     match escolha2:
