@@ -36,7 +36,7 @@ def login():
                 print('Saindo...')
                 sleep(3)
                 return 3
-                break
+                
             case _:#Informa que a opção escolhida é inválida
                 print('\033[31mOpção inválida!\033[m')
 
