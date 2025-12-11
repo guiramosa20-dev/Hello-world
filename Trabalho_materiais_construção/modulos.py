@@ -15,13 +15,22 @@ def addFuncionario():#Onde: a variávelefetivo = FUNCIONÁRIOS()
     
     i = int(input('Número de funcionários a serem cadastrados: ').strip())
     efetivo = []
+    reconta = 0
     for _ in range(i):
+        _ += reconta
         novato = FUNCIONARIO()
         efetivo.append(novato)
-        codigo = int(input(f'Código do {_+1}º novato:\n100 - Caixa\n200 - Conferente\n200 - Administrativo\n...').strip())
+
+        try:
+            codigo = int(input(f'Código do {_+1}º novato:\n100 - Caixa\n200 - Conferente\n200 - Administrativo\n...').strip())
+        except ValueError:
+            codigo = 0
+            
         #Verifica se o código é válido:
         if codigo != 100 and codigo != 200 and codigo != 300:
             print('\033[31m Código inválido!\033[m')
+            reconta += _ -1
+            continue
         #Adiciona funcionário ao registro:
         else:
             novato.codigo = codigo
@@ -43,11 +52,54 @@ def checarFuncionario(code,name,passe):#Onde: code = codigo, name = nome e passe
                 break
     return achou
 
+#registro de vendas:
+def venda():
+    with open('estoque.json','r', encoding='utf-8') as arquivo:
+        dados = json.load(arquivo)
+
+    while True:
+        somaPreco = 0.0
+        achou = False
+
+        try:
+            codigo = int(input('Código da mercadoria: ').strip())
+        except ValueError:
+            codigo = 10
+
+        if codigo == 0:
+            break
+        for i in range(len(dados)):
+            if dados[i]['codigo'] == codigo:
+                achou = True
+
+        if achou:
+            quantidade = int(input('Quantidade comprada: ').strip())
+            if quantidade <= dados[i]['quantidade']:
+                somaPreco += dados[i]['preco'] * quantidade
+                dados[i]['quantidade'] -= quantidade
+                print(f'\033[32mCompra registrada! Total: R$ {somaPreco:.2f}\033[m')
+
+                # salvamento dos dados atualizados no estoque
+                salvarDados('estoque.json',dados)
+            else:
+                print('\033[31mQuantidade indisponível em estoque!\033[m')
+        else:
+            print('\033[31mMercadoria não encontrada!\033[m')
+
 #adiciona mercadoria ao estoque
 def addMercadoria():#Onde a variávelestoque = MERCADORIA()
+    '''
+    try:
+        with open('estoque.json','r', encoding='utf-8') as arquivo:
+            existe = json.load(arquivo)
+    except FileNotFoundError:
+        pass
+    '''
     estoque = []
-
-    i = int(input('Número de mercadorias a serem cadastradas: ').strip())
+    try:
+        i = int(input('Quantidade de mercadorias a serem cadastradas: ').strip())
+    except ValueError:
+        i = 1
     
     for _ in range(i):
         novo = PRODUTO() #estoque deve se tornar uma lista e PRODUTO() deve ser adicionado à ela
@@ -64,8 +116,11 @@ def addMercadoria():#Onde a variávelestoque = MERCADORIA()
 #excluir mercadoria do estoque
 def removeMercadoria():
     with open('estoque.json','r', encoding='utf-8') as arquivo:
-        data = json.load(arquivo)
-        codigo = int(input('Código da mercadoria a ser removida: ').strip())
+        data = json.load(arquivo) #dados carregados na memória RAM
+        try:
+            codigo = int(input('Código da mercadoria a ser descartada: ').strip())
+        except ValueError:
+            codigo = 0
         for i in range(len(data)):
             if data[i]['codigo'] == codigo:
                 del data[i]

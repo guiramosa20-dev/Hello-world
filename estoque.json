@@ -1,9 +1,9 @@
 [
     {
-        "codigo": 123,
-        "nome": "Pregos",
-        "descricao": "um monte de pregos",
-        "quantidade": 10,
-        "preco": 3.99
+        "codigo": 399,
+        "nome": "Broca",
+        "descricao": "é só uma broca",
+        "quantidade": 32,
+        "preco": 6.99
     }
 ]
