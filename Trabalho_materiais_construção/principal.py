@@ -1,58 +1,90 @@
+from unittest import case
 from registros import *
 from modulos import *
-from getpass import getpass
 
-def login():
-    # Cabeçalho de inicialização do código:
-    print('-'*20)
-    print(''*5,'Casa do Prego')
-    print('-'*20)
-    print('-')
-    funcionarios = []
+while True:
+    escolha2 = login()
+    if escolha2 == 3:
+        break
+    match escolha2:#vendas
+        case 100:
+            while True:
+                print('-'*20)
+                print('1 - Registrar compras:')
+                print('2 - Sair')
+                print('-'*20)
+                try:
+                    escolha2 = int(input('...').strip())
+                except ValueError:
+                    escolha2 = 0
 
-    while True:
-        # Gerenciamento do acesso do funcionário:
-        print('Escolha:\n 1 - Cadastrar Funcionário \n 2 - Fazer Login')
-        escolha = int(input('...').strip())
+                match escolha2:
+                    case 1:
+                        venda()
+                    case 2:
+                        break
+                    case _:
+                        print('\033[31mOpção inválida!\033[m')
+                        
+        case 200:#estoque
+            while True:
+                print('-'*20)
+                print('Gerenciar estoque:')
+                print('-'*20)
+                print('1 - Adicionar mercadoria')
+                print('2 - Remover mercadoria')
+                print('3 - Sair')
+                try:
+                    escolha2 = int(input('...').strip())
+                except ValueError:
+                    escolha2 = 0
 
-        match escolha:
-            case 1:#cadastro de 1 funcionário
-                funcionarios.append(addFuncionario())
-    
-            case 2:#Login
-                codigo = int(input('Código: ').strip())
-                nome = input('Nome: ').strip()
-                senha = getpass('Senha: ')
+                match escolha2:#adição de mercadoria
+                    case 1:
+                        addMercadoria()
+                    case 2:# remoção de mercadoria
+                        removeMercadoria()
+                    case 3:
+                        break
+                    case _:
+                        print('\033[31mOpção inválida!\033[m')
 
-                if checarFuncionario(codigo,nome,senha,funcionarios):#Verificando se o funcionário está cadastrado
-                    return codigo
-                else:
-                    print('\033[31mFuncionário não cadastrado!\033[m')
+        case 300:#Gerenciamento administrativo
+            while True:
+                print('-'*40)
+                print('Gerenciamento administrativo:')
+                print('-'*40)
+                print('1 - Relatório de vendas')
+                print('2 - Relatório de estoque')
+                print('3 - Mudar dados de um produto')
+                print('4 - Mudar dados de um funcionário')
+                print('5 - Excluir produto')
+                print('6 - Excluir funcionário')
+                print('7 - Sair')
+                try:
+                    escolha2 = int(input('...').strip())
+                except ValueError:
+                    escolha2 = 0
+                
+                match escolha2:
+                    case 1:
+                        relatorioVendas()
+                    case 2:
+                        relatorioEstoque()
+                    case 3:
+                        alteraProduto()
+                    case 4:
+                        alteraFuncionario()
+                    case 5:
+                        removeMercadoria()
+                    case 6:
+                        removeFuncionario()
+                    case 7:
+                        break
+                    case _:
+                        print('\033[31mOpção inválida!\033[m')
 
-            case _:#Informa que a opção escolhida é inválida
-                print('\033[31mOpção inválida!\033[m')
-    
-# Main
-escolha2 = login()
+        case _:
+            print('\033[31mOpção inválida!\033[m')
 
-#Daqui pra baixo os prints são apenas placeholders para as funcionalidades que vão ser implementadas
-match escolha2:
-    case 100:
-        while True:
-            print('Registrar compras:')
-            print('-'*20)
-
-    case 200:
-        while True:
-            print('Registro de Entrega de Mercadoria:')
-            print('Descartar mercadoria danificada')
-    case 300:
-        while True:
-            print('Relatório de vendas')
-            print('Relatório de estoque')
-            print('Relatório de produtos descartados')
-            print('Mudar descrição de produto')
-            print('Nodar descrição de funcionário')
-            print('Excluir produto')
-            print('Excluir funcionário')
 

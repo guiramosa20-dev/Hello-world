@@ -1,0 +1,12 @@
+[
+    {
+        "codigo": 100,
+        "nome": "Guilherme",
+        "senha": "password"
+    },
+    {
+        "codigo": 300,
+        "nome": "Ana",
+        "senha": "lembrei"
+    }
+]

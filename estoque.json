@@ -1,0 +1,10 @@
+[
+    {
+        "codigo": 321,
+        "nome": "Brocas",
+        "descricao": "p/ furar parede",
+        "quantidade": 42,
+        "preco": 7.89,
+        "vendas": 4
+    }
+]
