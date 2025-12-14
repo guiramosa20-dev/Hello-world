@@ -15,3 +15,4 @@ class PRODUTO:
     descricao: str = ''
     quantidade: int = 0
     preco: float = 0.0
+    vendas: int = 0

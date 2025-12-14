@@ -1,9 +1,18 @@
 [
     {
-        "codigo": 399,
-        "nome": "Broca",
-        "descricao": "é só uma broca",
-        "quantidade": 32,
-        "preco": 6.99
+        "codigo": 123,
+        "nome": "Pregos",
+        "descricao": "um monte de pregos",
+        "quantidade": 34,
+        "preco": 3.99,
+        "vendas": 2
+    },
+    {
+        "codigo": 321,
+        "nome": "Brocas",
+        "descricao": "p/ furadeira de furar parede",
+        "quantidade": 42,
+        "preco": 7.89,
+        "vendas": 4
     }
 ]
